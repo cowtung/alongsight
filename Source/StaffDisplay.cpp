@@ -60,14 +60,34 @@ void StaffDisplay::drawClef(juce::Graphics& g, juce::Rectangle<float> bounds)
     float startY = bounds.getCentreY() - totalStaffHeight / 2.0f;
     float clefX = bounds.getX() + 10.0f;
     
-    // Draw a simplified treble clef (G clef) as a stylized 'G'
-    // This is a placeholder - in production, you'd use a music font
-    juce::Font font(24.0f, juce::Font::bold);
-    g.setFont(font);
+    // Draw a simplified treble clef using vector paths for cross-platform consistency
+    // The treble clef wraps around the G line (2nd line from bottom)
+    float gLineY = startY + (3 * staffLineSpacing);
     
-    // Position the 'G' to indicate treble clef (wraps around G line - 2nd line from bottom)
-    float gLineY = startY + (3 * staffLineSpacing); // 2nd line from bottom
-    g.drawText("𝄞", 
-               juce::Rectangle<float>(clefX - 5, gLineY - staffLineSpacing * 2, 30, staffLineSpacing * 4),
-               juce::Justification::centredLeft);
+    juce::Path clefPath;
+    float clefWidth = staffLineSpacing * 1.5f;
+    float clefHeight = staffLineSpacing * 3.5f;
+    
+    // Create a stylized treble clef shape using bezier curves
+    // Starting from bottom, curving up and around
+    float x = clefX;
+    float y = gLineY;
+    
+    // Simplified clef shape - a spiral that wraps around G line
+    clefPath.startNewSubPath(x + clefWidth * 0.5f, y + clefHeight * 0.3f);
+    clefPath.quadraticTo(
+        x + clefWidth * 0.2f, y + clefHeight * 0.1f,
+        x + clefWidth * 0.4f, y - clefHeight * 0.2f);
+    clefPath.quadraticTo(
+        x + clefWidth * 0.7f, y - clefHeight * 0.4f,
+        x + clefWidth * 0.5f, y - clefHeight * 0.1f);
+    clefPath.quadraticTo(
+        x + clefWidth * 0.3f, y + clefHeight * 0.1f,
+        x + clefWidth * 0.5f, y + clefHeight * 0.3f);
+    
+    // Draw the path with a stroke
+    g.strokePath(clefPath, juce::PathStrokeType(2.0f));
+    
+    // Add a dot for the bottom of the clef
+    g.fillEllipse(x + clefWidth * 0.4f, y + clefHeight * 0.35f, 3.0f, 3.0f);
 }

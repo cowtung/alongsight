@@ -89,8 +89,9 @@ void MainComponent::timerCallback()
     // Update audio meter with current level
     if (isRunning)
     {
+        static constexpr float audioLevelScale = 5.0f;
         float level = audioComponent.getAudioLevel();
-        audioMeter.setLevel(level * 5.0f); // Scale up for better visibility
+        audioMeter.setLevel(level * audioLevelScale); // Scale up for better visibility
     }
 }
 
