@@ -1,0 +1,42 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cpp,h,hpp,c,cc,cxx}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+[*.{json,xml,yml,yaml}]
+indent_style = space
+indent_size = 2
+```
+
+**Why this matters:**
+- Works across VS Code, Visual Studio, and other editors
+- GitHub respects it when displaying code
+- Team members automatically get the right settings
+
+## Step 4: Tell Git to Handle Tabs Properly
+
+**Create/edit `.gitattributes` in your project root:**
+```
+# Ensure consistent line endings
+* text=auto
+
+# C++ source files
+*.cpp text
+*.h text
+*.hpp text
+*.c text
+*.cc text
+*.cxx text
+
+# Keep tabs in source files
+*.cpp filter=
+*.h filter=
+*.hpp filter=

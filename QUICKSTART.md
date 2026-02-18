@@ -4,58 +4,78 @@ Welcome to AlongSight! This guide will help you get started with the music sight
 
 ## Installation
 
+### Prerequisites
+
+**All Platforms:**
+- Download and install [JUCE](https://juce.com/get-juce/download) (free GPL/Commercial license)
+- Install the Projucer application (included with JUCE)
+
 ### Windows
 
-1. **Prerequisites**:
-   - Install Visual Studio 2019+ with C++ tools, OR
-   - Install MinGW-w64 with CMake
+1. **Additional Prerequisites**:
+   - Install Visual Studio 2019 or later with C++ desktop development tools
+   - Ensure Windows 10 SDK is installed
 
-2. **Build**:
-   ```cmd
-   build.bat
-   ```
+2. **Setup with Projucer**:
+   - Open `alongsight.jucer` in Projucer
+   - Click "Save Project and Open in IDE" (or press Ctrl+P)
+   - This will generate and open the Visual Studio solution in `Builds\VisualStudio2026\`
 
-3. **Run**:
-   ```cmd
-   build\Release\AlongSight.exe
-   ```
+3. **Build**:
+   - In Visual Studio, select your build configuration (Debug/Release)
+   - Build > Build Solution (or press F7)
+
+4. **Run**:
+   - Press F5 to run with debugging, or Ctrl+F5 without debugging
+   - Executable location: `Builds\VisualStudio2026\x64\Debug\App\AlongSight_App.exe`
 
 ### Linux
 
-1. **Prerequisites**:
+1. **Additional Prerequisites**:
    ```bash
-   sudo apt-get install build-essential cmake git \
+   sudo apt-get install build-essential git \
        libasound2-dev libjack-jackd2-dev \
        libfreetype6-dev libx11-dev libxrandr-dev \
-       libxinerama-dev libxcursor-dev
+       libxinerama-dev libxcursor-dev libwebkit2gtk-4.0-dev
    ```
 
-2. **Build**:
+2. **Setup with Projucer**:
+   - Open `alongsight.jucer` in Projucer
+   - Click "Save Project and Open in IDE" to export Makefile
+   - This will generate build files in `Builds/LinuxMakefile/`
+
+3. **Build**:
    ```bash
-   ./build.sh
+   cd Builds/LinuxMakefile
+   make CONFIG=Release
    ```
 
-3. **Run**:
+4. **Run**:
    ```bash
-   ./build/AlongSight_artefacts/AlongSight
+   ./build/AlongSight_App
    ```
 
 ### macOS
 
-1. **Prerequisites**:
-   ```bash
-   brew install cmake
-   ```
+1. **Additional Prerequisites**:
+   - Install Xcode from the Mac App Store
+   - Install Xcode Command Line Tools:
+     ```bash
+     xcode-select --install
+     ```
 
-2. **Build**:
-   ```bash
-   ./build.sh
-   ```
+2. **Setup with Projucer**:
+   - Open `alongsight.jucer` in Projucer
+   - Click "Save Project and Open in IDE" to export Xcode project
+   - This will generate and open the project in `Builds/MacOSX/`
 
-3. **Run**:
-   ```bash
-   ./build/AlongSight_artefacts/AlongSight
-   ```
+3. **Build**:
+   - In Xcode, select your build scheme and target device
+   - Product > Build (or press ⌘B)
+
+4. **Run**:
+   - Product > Run (or press ⌘R)
+   - Application bundle: `Builds/MacOSX/build/Debug/AlongSight_App.app`
 
 ## First Time Setup
 

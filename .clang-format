@@ -1,0 +1,47 @@
+# .clang-format
+# Project style: conventional C++ spacing, hard tabs, visually distinct from JUCE.
+
+BasedOnStyle: LLVM
+Language: Cpp
+
+# Indentation / layout
+IndentWidth: 4
+TabWidth: 4
+UseTab: Always
+ColumnLimit: 300
+ContinuationIndentWidth: 4
+
+# Braces: Allman
+BreakBeforeBraces: Allman
+
+# Parentheses spacing: conventional C++
+SpaceBeforeParens: Never
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInAngles: false
+SpaceInEmptyParentheses: false
+
+# Pointers / references
+PointerAlignment: Left
+ReferenceAlignment: Pointer
+DerivePointerAlignment: false
+
+# Switch/case
+IndentCaseLabels: true
+
+# Includes
+SortIncludes: true
+IncludeBlocks: Preserve
+
+# Line breaking
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Never
+
+# Comments
+ReflowComments: true

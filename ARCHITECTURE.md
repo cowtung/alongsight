@@ -7,45 +7,45 @@ AlongSight is a JUCE-based application for teaching music sight-reading. The app
 ## System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                   AlongSight Application                 │
-├─────────────────────────────────────────────────────────┤
-│                      MainComponent                       │
+┌────────────────────────────────────────────────────────┐
+│                   AlongSight Application               │
+├────────────────────────────────────────────────────────┤
+│                      MainComponent                     │
 │  ┌──────────────────────────────────────────────────┐  │
 │  │  Title: "AlongSight - Music Sight-Reading Tutor" │  │
 │  │  Status: Ready/Listening messages                │  │
 │  └──────────────────────────────────────────────────┘  │
-│                                                          │
+│                                                        │
 │  ┌──────────────────────────────────────────────────┐  │
-│  │            StaffDisplay Component                 │  │
+│  │            StaffDisplay Component                │  │
 │  │  - Renders 5-line musical staff                  │  │
 │  │  - Displays treble clef                          │  │
 │  │  - Future: Note/chord display                    │  │
 │  └──────────────────────────────────────────────────┘  │
-│                                                          │
-│  ┌──────────┐  ┌──────────────────────────────────┐   │
-│  │  Audio   │  │      Start/Stop Button           │   │
-│  │  Meter   │  │  - Toggle audio capture          │   │
-│  │          │  │  - Green (Start) / Red (Stop)    │   │
-│  └──────────┘  └──────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
+│                                                        │
+│  ┌──────────┐   ┌──────────────────────────────────┐   │
+│  │  Audio   │   │      Start/Stop Button           │   │
+│  │  Meter   │   │  - Toggle audio capture          │   │
+│  │          │   │  - Green (Start) / Red (Stop)    │   │
+│  └──────────┘   └──────────────────────────────────┘   │
+└────────────────────────────────────────────────────────┘
                          │
                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                  AudioComponent                          │
-│  (AudioAppComponent - JUCE Audio Integration)           │
-│                                                          │
-│  - Audio input capture (2 channels)                     │
-│  - Real-time level calculation (RMS)                    │
-│  - Future: FFT for pitch detection                      │
-│  - Future: Rhythm pattern analysis                      │
-└─────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                  AudioComponent                        │
+│  (AudioAppComponent - JUCE Audio Integration)          │
+│                                                        │
+│  - Audio input capture (2 channels)                    │
+│  - Real-time level calculation (RMS)                   │
+│  - Future: FFT for pitch detection                     │
+│  - Future: Rhythm pattern analysis                     │
+└────────────────────────────────────────────────────────┘
                          │
                          ▼
-┌─────────────────────────────────────────────────────────┐
-│                 Hardware Audio Input                     │
-│  (Microphone, Instrument Interface, etc.)               │
-└─────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                 Hardware Audio Input                   │
+│  (Microphone, Instrument Interface, etc.)              │
+└────────────────────────────────────────────────────────┘
 ```
 
 ## Component Responsibilities

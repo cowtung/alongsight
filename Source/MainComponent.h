@@ -1,40 +1,41 @@
 #pragma once
 
-#include <juce_gui_extra/juce_gui_extra.h>
 #include "AudioComponent.h"
-#include "AudioMeter.h"
 #include "StaffDisplay.h"
+#include <JuceHeader.h>
 
 //==============================================================================
-/**
-    MainComponent is the primary UI component that integrates:
-    - Audio input/analysis
-    - Visual audio meter
-    - Musical staff display
-    - Start/Stop controls
+/*
+	This component lives inside our window, and this is where you should put all
+	your controls and content.
 */
-class MainComponent : public juce::Component,
-                      private juce::Timer
+class MainComponent : public juce::Component, private juce::Timer
 {
 public:
-    MainComponent();
-    ~MainComponent() override;
+	//==============================================================================
+	MainComponent();
+	~MainComponent() override;
 
-    void paint(juce::Graphics& g) override;
-    void resized() override;
+	//==============================================================================
+	void paint(juce::Graphics&) override;
+	void resized() override;
 
 private:
-    void timerCallback() override;
-    void startStopButtonClicked();
+	//==============================================================================
+	void timerCallback() override;
+	void startStopButtonClicked();
+	void keySignatureChanged();
 
-    AudioComponent audioComponent;
-    AudioMeter audioMeter;
-    StaffDisplay staffDisplay;
-    juce::TextButton startStopButton;
-    juce::Label titleLabel;
-    juce::Label statusLabel;
+	AudioComponent audioComponent;
+	StaffDisplay staffDisplay;
+	juce::TextButton startStopButton;
+	juce::Label titleLabel;
+	juce::Label statusLabel;
+	juce::ComboBox keySignatureSelector;
+	juce::Label keySignatureLabel;
 
-    bool isRunning{false};
+	bool isRunning{false};
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
+
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
